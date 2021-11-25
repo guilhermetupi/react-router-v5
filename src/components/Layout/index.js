@@ -1,9 +1,12 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
+
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import Header from '../Header';
-import PostsList from '../PostsList';
 import Footer from '../Footer';
+import Routes from '../../Routes';
+
+import { Nav } from './styles';
 
 export default class Layout extends React.Component {
   componentDidMount() {
@@ -22,9 +25,16 @@ export default class Layout extends React.Component {
   render() {
     return (
       <>
-        <Header />
-        <PostsList />
-        <Footer />
+        <Router>
+          <Header />
+          <Nav>
+            <Link to="/">Home</Link>
+            <Link to="/posts">Posts</Link>
+            <Link to="/posts/456415614561456">Post</Link>
+          </Nav>
+          <Routes />
+          <Footer />
+        </Router>
       </>
     );
   }
